@@ -1,6 +1,6 @@
-\documentclass[12pt,MSc,wordcount,twoside]{muthesis}
+\documentclass[12pt,PhD,wordcount,twoside]{muthesis}
 % The regulations say that 12pt should be used
-% Change the MSc option to MPhil, MRes or PhD if appropriate
+% Change the PhD option to MSc, MPhil, or MRes if appropriate
 
 \usepackage{verbatim}
 \usepackage{graphicx}
@@ -9,8 +9,8 @@
 \usepackage{url} % typeset URL's reasonably
 \usepackage{listings}
 \usepackage{natbib}
-
 \usepackage{pslatex} % Use Postscript fonts
+\usepackage[T1]{fontenc} % Use T1 font encoding which supports more elemental symbols such as 'ö'
 
 % Uncomment the next line if you want subsubsections to be numbered
 %\setcounter{secnumdepth}{3}
@@ -56,7 +56,7 @@ I would like to thank...
 \include{Chapter/chapter2}
 \include{Chapter/chapter3}
 
-  \bibliography{Reference/refs}    % this causes the references to be listed
+\bibliography{Reference/refs}    % this causes the references to be listed
 
 \bibliographystyle{agsm}
 

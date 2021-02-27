@@ -1,11 +1,12 @@
 %% muthesis Class for LaTeX2e.
 
 %%
-%% Time-stamp: <2017-09-06 15:50:06 grahamgough>
+%% Time-stamp: <2019-09-05 13:23:08 grahamgough>
 %%
 
 %%
-%% Copyright 1999-2017 G.D. Gough and the University of Manchester
+%% Copyright 1999-2019 G.D. Gough (Graham.Gough@manchester.ac.uk)
+%% and The University of Manchester
 %%
 %% This program can redistributed and/or modified under the terms
 %% of the LaTeX Project Public License Distributed from CTAN
@@ -13,7 +14,7 @@
 %% version 1 of the License, or (at your option) any later version.
 
 %% This class file has been cobbled together for use of postgraduate
-%% students in the School of Computer Science at the University of
+%% students in the Department of Computer Science at the University of
 %% Manchester. I believe it had its origins in the Stanford thesis
 %% style but has since been modified almost beyond recognition to cope
 %% with life in Manchester.
@@ -21,9 +22,15 @@
 %% A fairly detailed description of the use of this class can be found
 %% below (see `Example of use')
 
-%% Updated 6/9/17 to  include wordcount Option.
+%% Updated 27/8/19 To reflect change of Name from School to Department
+%% and change in Copyright text.
 
-%% Updated 16/3/17 to  include EngD Option And update name of faculty.
+%% Updated 12/12/18 to add anon class option to use student id
+%% instead of author For anonymous submission.
+
+%% Updated 6/9/17 to  include wordcount class option.
+
+%% Updated 16/3/17 to  include EngD class option and update name of faculty.
 
 %% Updated 17/8/11 to  include word count
 
@@ -34,12 +41,12 @@
 %% Updated 29/8/07 to take care of new Copyright statement
 
 %%
-%% The \school command can be used to define a school other than
+%% The \department command can be used to define a department other than
 %% Computer Science, 
-%% e.g \school{School of Applied Basket Weaving}
-%% but no support is provided for users outside the School of C.Sc. 
+%% e.g \department{Department of Applied Basket Weaving}
+%% but no support is provided for users outside the Department of C.Sc. 
 %% The \faculty command can be used to define a faculty other than
-%% EPS, 
+%% Science and Engineering, 
 %% e.g \faculty{Other Stuff}
 %%
 %% Note that this makes no attempt to deal with multi-volume thesis -
@@ -67,7 +74,7 @@
 %%               Statement - A thesis ..... Faculty of ...
 %%               Year of Presentation
 %%               Candidate's name
-%%               Candidate's school
+%%               Candidate's department
 %%
 %%
 %% 4)    Certain members of this university never having heard of
@@ -115,31 +122,23 @@
 %%       acknowledgements etc, should come after the mandatory preface
 %%       sections and before the first chapter.
 %%
-%% 9)   To include a word count use the wordcount Option. This assumes that
-%%      there exists a  file word.count which contains the wordcount. 
-%%      This can be created in any way you wish but a good way is to use
-%%      the program texcount.pl, which can be downloaded from
-%%      http://app.uio.no/ifi/texcount/ and
-%%      Once you have this installed, run the Command
-%%      texcount.pl -1 -sum -relaxed -inc report.tex > word.count
-%%      This may include an error message, so may need editing before use.
-%%      It is possible to run the command automatically from LaTeX but
-%%      this is not recommended because of the error message issue.
-%%      See http://app.uio.no/ifi/texcount/faq.html for details.
-%%
-%% It is not compatible with the drafthead style.
+
+%% muthesis is not compatible with the drafthead style.
 
 
-\NeedsTeXFormat{LaTeX2e} \ProvidesClass{muthesis}[2011/08/15 MU Thesis Class]
+\NeedsTeXFormat{LaTeX2e} \ProvidesClass{muthesis}[2017/09/06 MU Thesis Class]
 
 \RequirePackage{setspace}
 \newif\ifwordctp@
 \newif\ifsinglesp@
 \newif\ifdoublesp@
+\newif\ifanon@
+\anon@false
 \doublesp@false
 
 \def\@thesis{dissertation}
 
+\DeclareOption{anon}{\anon@true}
 \DeclareOption{wordcount}{\wordctp@true}
 \DeclareOption{singlespace}{\singlesp@true}
 \DeclareOption{doublespace}{\doublesp@true}
@@ -157,7 +156,7 @@
 
 \LoadClass[a4paper]{report}
 
-%% Manchester University PhD thesis style -- modifications to the report style
+%% The University of Manchester PhD thesis style -- modifications to the report style
 %%
 \long\def\comment#1{}
 \comment{
@@ -171,9 +170,10 @@
     \title{How to Write Theses\\
             With Two Line Titles}
     \author{John Henry Candidate}
+    \stuid{John Henry Candidate}
     \principaladviser{John Parker}
     \firstreader{John Green}
-    \secondreader{John BigBooty\\(Another School)}
+    \secondreader{John BigBooty\\(Another Department)}
 
     \beforeabstract
     \prefacesection{Abstract}
@@ -226,8 +226,9 @@ Documentation:
 
         \title{thesis title}
         \author{author's name}
-        \school{author's school}
-                - School of Computer Science if omitted
+	\stuid{author's student id}
+        \department{author's department}
+                - Department of Computer Science if omitted
         \faculty{author's faculty}
                 - Science and Engineering if omitted
         \principaladviser{the principal advisor's name}
@@ -264,6 +265,18 @@ Documentation:
         seems to give acceptable looking results, but it may be
         omitted to get smaller print.
 
+        A word count now (Sep 17) seems to be required. To include a word count use the wordcount class option,
+        for example \documentclass[12pt,MSc,wordcount]{muthesis}.
+        This requires that you have created a file with the name word.count which contains
+        the word count. This file can be created in any way you wish but a good way is to use
+        the program texcount.pl, which can be downloaded from
+        http://app.uio.no/ifi/texcount/ and
+        Once you have this installed, run the command
+        perl texcount.pl -1 -sum -relaxed -inc report.tex > word.count
+        The resulting file may include an error message, so may need editing before use.
+        It is possible to run the command automatically from LaTeX but
+        this is not recommended because of the error message issue.
+        See http://app.uio.no/ifi/texcount/faq.html for details.
 }
 %% We need >15mm  margins except on the binding edge, where it is >40mm
 \oddsidemargin 15truemm \evensidemargin 0truemm
@@ -294,7 +307,9 @@ Documentation:
 %% \supervisor , just by copying the definitions of \principaladvisor
 %%
 \def\dept#1{\gdef\@dept{#1}}
-\def\school#1{\gdef\@dept{#1}}
+\def\stuid#1{\gdef\@stuid{#1}}
+\stuid{Need to set student id using stuid macro}
+\def\department#1{\gdef\@dept{#1}}
 \def\faculty#1{\gdef\@faculty{#1}}
 \def\principaladviser#1{\gdef\@principaladviser{#1}}
 \def\advis@r{Advisor} % default spelling---we are English!
@@ -305,7 +320,7 @@ Documentation:
 \def\submitdate#1{\gdef\@submitdate{#1}}
 \def\copyrightyear#1{\gdef\@copyrightyear{#1}} % \author, \title in report
 \def\@title{}\def\@author{}
-\def\@dept{School of Computer Science}
+\def\@dept{Department of Computer Science}
 \def\@faculty{Science and Engineering}
 \def\@principaladviser{}\def\@firstreader{}\def\@secondreader{}
 %\def\@submitdate{\ifcase\the\month\or
@@ -333,7 +348,7 @@ Documentation:
   \end{center}
   \vfill
   \begin{center}
-    \textsc{A \expandafter{\@thesis} submitted to the University of Manchester\\
+    \textsc{A \expandafter{\@thesis} submitted to The University of Manchester\\
       for the degree of \degreetitle\\
       in the Faculty of \@faculty}
   \end{center}
@@ -343,10 +358,13 @@ Documentation:
   \end{center}
   \vfill
   \begin{center}
-    \normalfont By\\
-    \@author\\
+    \normalfont
+    \ifanon@{Student id: \@stuid}\else\@author\fi\\
+    \end{center}
+    \vfill
+    \begin{center}
     \expandafter{\@dept}
-  \end{center}\vskip.5in
+    \end{center}\vskip.5in
   \newpage
 }
 
@@ -354,7 +372,7 @@ Documentation:
  {\centering  \singlespacing\large%
    \textsc{\expandafter{\@title}}\\%
    \@author\\%
-   A \expandafter{\@thesis} submitted to the University of Manchester\\%
+   A \expandafter{\@thesis} submitted to The University of Manchester\\%
    for the degree of \degreetitle, \@submitdate\\ \mbox{}}\\%
 }
 
@@ -388,10 +406,10 @@ Documentation:
   Copyright and any Intellectual Property and/or Reproductions
   described in it may take place is available in the University IP
   Policy (see
-  \url{http://documents.manchester.ac.uk/DocuInfo.aspx?DocID=487}), in
+  \url{http://documents.manchester.ac.uk/DocuInfo.aspx?DocID=24420}), in
     any relevant Thesis restriction declarations deposited in the
     University Library, The University Library's regulations (see
-    \url{http://www.manchester.ac.uk/library/aboutus/regulations}) and
+    \url{http://www.library.manchester.ac.uk/about/regulations/}) and
     in The University's policy on presentation of Theses
 
  
@@ -407,7 +425,7 @@ Documentation:
 % Author.
 
 % The ownership of any intellectual property rights which may be described
-% in this thesis is vested in the University of Manchester, subject to
+% in this thesis is vested in The University of Manchester, subject to
 % any prior agreement to the contrary, and may not be made available for
 % use by third parties without the written permission of the University,
 % which will prescribe the terms and conditions of any such agreement.
@@ -480,7 +498,7 @@ of \degreetitle.
         ~\\
         ~\\
         % TC:ignore
-        \textbf{Word Count: \input{WordCount/word.count}} % need texcount ignore around
+        \textbf{Word Count: \input{word.count}} % need texcount ignore around
 	           % this to stop error message (open recursion on file)
        % TC:endignore
        \fi
