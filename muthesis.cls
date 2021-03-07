@@ -498,18 +498,20 @@ of \degreetitle.
         ~\\
         ~\\
         % TC:ignore
-        \textbf{Word Count: \input{word.count}} % need texcount ignore around
+        \textbf{Word Count: \input{WordCount/word.count}} % need texcount ignore around
 	           % this to stop error message (open recursion on file)
        % TC:endignore
        \fi
        \newpage
         \iftablespage
                 \addvspace{10pt}
+                \addcontentsline{toc}{chapter}{List of Tables} % add List of Tables to the Table of Content, comment out if you prefer to disable this feature
                 \listoftables
                 \newpage
         \fi
         \iffigurespage
                 \addvspace{10pt}
+                \addcontentsline{toc}{chapter}{List of Figures} % add List of Figures to the Table of Content, comment out if you prefer to disable this feature
                 \listoffigures
                 \newpage
         \fi}

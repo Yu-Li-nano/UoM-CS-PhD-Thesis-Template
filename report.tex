@@ -2,6 +2,12 @@
 % The regulations say that 12pt should be used
 % Change the PhD option to MSc, MPhil, or MRes if appropriate
 
+% Set font type, Calibri and Times New Roman are recommended.
+% Note: Compiling by xelatex or lualatex required (not pdflatex).
+\usepackage{fontspec}
+\setmainfont{Calibri} % Or Times New Roman
+
+
 \usepackage{verbatim}
 \usepackage{graphicx}
 \graphicspath{{Graphics/}}
@@ -10,7 +16,7 @@
 \usepackage{listings}
 \usepackage{natbib}
 \usepackage{pslatex} % Use Postscript fonts
-\usepackage[T1]{fontenc} % Use T1 font encoding which supports more elemental symbols such as 'ö'
+%\usepackage[T1]{fontenc} % Use T1 font encoding which supports more elemental symbols such as 'ö'
 
 % Uncomment the next line if you want subsubsections to be numbered
 %\setcounter{secnumdepth}{3}
