@@ -7,4 +7,4 @@ The template is based on an [original template](http://studentnet.cs.manchester.
 
 **New features**
  - List of Tables and List of Figures shown in the Table of Content
-   > if you prefer to disable this feafure, please comment out the Lines 508 and 514 in the template file [muthesis.cls](muthesis.cls)
+   > if you prefer to disable this feafure, please comment out the Lines [508](muthesis.cls#L508) and [514](muthesis.cls#L514) in the template file [muthesis.cls](muthesis.cls)
