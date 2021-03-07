@@ -6,5 +6,5 @@ A Latex template for MSc/PhD thesis @UoM
 The template is based on an [original template](http://studentnet.cs.manchester.ac.uk/resources/latex/MUThesis/) by Graham Gough (Time-stamp: <2019-09-05 13:23:08>) and the [improved version](https://github.com/swsmile/UOM-CSMScDissertationTemplate) by swsmile.
 
 **New features**
- - List of Tables and List of Figures shown in the table of content
+ - List of Tables and List of Figures shown in the Table of Content
    > if you prefer to disable this feafure, please comment out the Lines 508 and 514 in the template file [muthesis.cls](muthesis.cls)
