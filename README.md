@@ -8,3 +8,4 @@ The template is based on an [original template](http://studentnet.cs.manchester.
 **New features**
  - List of Tables and List of Figures shown in the table of content
    > if you prefer to disable this feafure, please comment out the Lines 508 and 514 in the template file [muthesis.cls](muthesis.cls)
+ - Hyperlinks enabled for cross-referenced elements such as figures, references, sections, etc. [Ref.](https://www.overleaf.com/learn/latex/hyperlinks)
