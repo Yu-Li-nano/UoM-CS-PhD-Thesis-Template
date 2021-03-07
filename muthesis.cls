@@ -348,7 +348,7 @@ Documentation:
   \end{center}
   \vfill
   \begin{center}
-    \textsc{A \expandafter{\@thesis} submitted to The University of Manchester\\
+    \textsc{A \expandafter{\@thesis} submitted to the University of Manchester\\
       for the degree of \degreetitle\\
       in the Faculty of \@faculty}
   \end{center}
